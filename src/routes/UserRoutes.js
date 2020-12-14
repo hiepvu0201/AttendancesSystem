@@ -1,10 +1,10 @@
 import { addNewUser, getUsers, getUserWithId, updateUser, deleteUser } from '../controllers/UsersController';
 
 const routes = (app) => {
-    app.route('/Users')
+    app.route('/users')
         .get(getUsers)
         .post(addNewUser);
-    app.route('/Users/:UserId')
+    app.route('/users/:userId')
         .get(getUserWithId)
         .put(updateUser)
         .delete(deleteUser);

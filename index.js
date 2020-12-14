@@ -2,7 +2,7 @@ import express from 'express';
 const app = express();
 const PORT = 5000;
 
-import routes from './src/routes/DepartmentRoutes';
+import departmentRoutes from './src/routes/DepartmentRoutes';
 import userRoutes from './src/routes/UserRoutes';
 import shiftRoutes from './src/routes/ShiftRoutes';
 import payslipRoutes from './src/routes/PayslipRoutes';
@@ -24,7 +24,12 @@ mongoose.connect(process.env.DB, {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-routes(app);
+departmentRoutes(app);
+userRoutes(app);
+shiftRoutes(app);
+payslipRoutes(app);
+attendanceRoutes(app);
+roleRoutes(app);
 
 app.get('/', (req, res) =>
     res.send(`Node and express server running on port ${PORT}`)

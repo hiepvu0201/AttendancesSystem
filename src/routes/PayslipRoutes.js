@@ -1,10 +1,10 @@
 import { addNewPayslip, getPayslips, getPayslipWithId, updatePayslip, deletePayslip } from '../controllers/PayslipsController';
 
 const routes = (app) => {
-    app.route('/Payslips')
+    app.route('/payslips')
         .get(getPayslips)
         .post(addNewPayslip);
-    app.route('/Payslips/:PayslipId')
+    app.route('/payslips/:payslipId')
         .get(getPayslipWithId)
         .put(updatePayslip)
         .delete(deletePayslip);

@@ -1,10 +1,10 @@
 import { addNewAttendance, getAttendances, getAttendanceWithId, updateAttendance, deleteAttendance } from '../controllers/AttendancesController';
 
 const routes = (app) => {
-    app.route('/Attendances')
+    app.route('/attendances')
         .get(getAttendances)
         .post(addNewAttendance);
-    app.route('/Attendances/:AttendanceId')
+    app.route('/attendances/:attendanceId')
         .get(getAttendanceWithId)
         .put(updateAttendance)
         .delete(deleteAttendance);
