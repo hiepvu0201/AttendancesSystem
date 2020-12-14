@@ -2,12 +2,12 @@ import { addNewDepartment, getDepartments, getDepartmentWithId, updateDepartment
 
 const routes = (app) => {
     app.route('/departments')
-        .get(getDepartments)
-        .post(addNewDepartment);
+        .get(GetDepartments)
+        .post(AddNewDepartment);
     app.route('/departments/:departmentId')
-        .get(getDepartmentWithId)
-        .put(updateDepartment)
-        .delete(deleteDepartment);
+        .get(GetDepartmentWithId)
+        .put(UpdateDepartment)
+        .delete(DeleteDepartment);
 }
 
 export default routes;

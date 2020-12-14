@@ -2,12 +2,12 @@ import { addNewAttendance, getAttendances, getAttendanceWithId, updateAttendance
 
 const routes = (app) => {
     app.route('/attendances')
-        .get(getAttendances)
-        .post(addNewAttendance);
+        .get(GetAttendances)
+        .post(AddNewAttendance);
     app.route('/attendances/:attendanceId')
-        .get(getAttendanceWithId)
-        .put(updateAttendance)
-        .delete(deleteAttendance);
+        .get(GetAttendanceWithId)
+        .put(UpdateAttendance)
+        .delete(DeleteAttendance);
 }
 
 export default routes;

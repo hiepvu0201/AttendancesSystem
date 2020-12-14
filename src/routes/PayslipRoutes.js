@@ -2,12 +2,12 @@ import { addNewPayslip, getPayslips, getPayslipWithId, updatePayslip, deletePays
 
 const routes = (app) => {
     app.route('/payslips')
-        .get(getPayslips)
-        .post(addNewPayslip);
+        .get(GetPayslips)
+        .post(AddNewPayslip);
     app.route('/payslips/:payslipId')
-        .get(getPayslipWithId)
-        .put(updatePayslip)
-        .delete(deletePayslip);
+        .get(GetPayslipWithId)
+        .put(UpdatePayslip)
+        .delete(DeletePayslip);
 }
 
 export default routes;

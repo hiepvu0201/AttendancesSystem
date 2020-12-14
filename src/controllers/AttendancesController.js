@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { AttendancesSchema } from '../models/Attendances'
 const Attendances = mongoose.model('Attendances', AttendancesSchema);
-export const addNewAttendance = (req, res) => {
+export const AddNewAttendance = (req, res) => {
     let newAttendance = new Attendances(req.body);
     newAttendance.save((err, attendance) => {
         if (err) {
@@ -10,7 +10,7 @@ export const addNewAttendance = (req, res) => {
         res.json(attendance)
     })
 }
-export const getAttendances = (req, res) => {
+export const GetAttendances = (req, res) => {
     Attendances.find({}, (err, attendance) => {
         if (err) {
             res.send(err)
@@ -18,7 +18,7 @@ export const getAttendances = (req, res) => {
         res.json(attendance)
     })
 }
-export const getAttendanceWithId = (req, res) => {
+export const GetAttendanceWithId = (req, res) => {
     Attendances.findById(req.params.attendanceId, (err, attendance) => {
         if (err) {
             res.send(err)
@@ -26,7 +26,7 @@ export const getAttendanceWithId = (req, res) => {
         res.json(attendance)
     })
 }
-export const updateAttendance = (req, res) => {
+export const UpdateAttendance = (req, res) => {
     Attendances.findOneAndUpdate({ _id: req.params.attendanceId }, req.body, { new: true, useFindAndModify: false }, (err, attendance) => {
         if (err) {
             res.send(err)
@@ -34,7 +34,7 @@ export const updateAttendance = (req, res) => {
         res.json(attendance)
     })
 }
-export const deleteAttendance = (req, res) => {
+export const DeleteAttendance = (req, res) => {
     Attendances.deleteOne({ _id: req.params.attendanceId }, (err, attendance) => {
         if (err) {
             res.send(err)

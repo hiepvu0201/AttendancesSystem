@@ -2,12 +2,12 @@ import { addNewUser, getUsers, getUserWithId, updateUser, deleteUser } from '../
 
 const routes = (app) => {
     app.route('/users')
-        .get(getUsers)
-        .post(addNewUser);
+        .get(GetUsers)
+        .post(AddNewUser);
     app.route('/users/:userId')
-        .get(getUserWithId)
-        .put(updateUser)
-        .delete(deleteUser);
+        .get(GetUserWithId)
+        .put(UpdateUser)
+        .delete(DeleteUser);
 }
 
 export default routes;

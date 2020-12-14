@@ -2,12 +2,12 @@ import { addNewShift, getShifts, getShiftWithId, updateShift, deleteShift } from
 
 const routes = (app) => {
     app.route('/shifts')
-        .get(getShifts)
-        .post(addNewShift);
+        .get(GetShifts)
+        .post(AddNewShift);
     app.route('/shifts/:shiftId')
-        .get(getShiftWithId)
-        .put(updateShift)
-        .delete(deleteShift);
+        .get(GetShiftWithId)
+        .put(UpdateShift)
+        .delete(DeleteShift);
 }
 
 export default routes;

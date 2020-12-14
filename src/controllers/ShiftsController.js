@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { ShiftsSchema } from '../models/Shifts'
 const Shifts = mongoose.model('Shifts', ShiftsSchema);
-export const addNewShift = (req, res) => {
+export const AddNewShift = (req, res) => {
     let NewShift = new Shifts(req.body);
     NewShift.save((err, shift) => {
         if (err) {
@@ -10,7 +10,7 @@ export const addNewShift = (req, res) => {
         res.json(shift)
     })
 }
-export const getShifts = (req, res) => {
+export const GetShifts = (req, res) => {
     Shifts.find({}, (err, shift) => {
         if (err) {
             res.send(err)
@@ -18,7 +18,7 @@ export const getShifts = (req, res) => {
         res.json(shift)
     })
 }
-export const getShiftWithId = (req, res) => {
+export const GetShiftWithId = (req, res) => {
     Shifts.findById(req.params.shiftId, (err, shift) => {
         if (err) {
             res.send(err)
@@ -26,7 +26,7 @@ export const getShiftWithId = (req, res) => {
         res.json(shift)
     })
 }
-export const updateShift = (req, res) => {
+export const UpdateShift = (req, res) => {
     Shifts.findOneAndUpdate({ _id: req.params.shiftId }, req.body, { new: true, useFindAndModify: false }, (err, shift) => {
         if (err) {
             res.send(err)
@@ -34,7 +34,7 @@ export const updateShift = (req, res) => {
         res.json(shift)
     })
 }
-export const deleteShift = (req, res) => {
+export const DeleteShift = (req, res) => {
     Shifts.deleteOne({ _id: req.params.shiftId }, (err, shift) => {
         if (err) {
             res.send(err)

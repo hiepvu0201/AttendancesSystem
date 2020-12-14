@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { RolesSchema } from '../models/Roles'
 const Roles = mongoose.model('Roles', RolesSchema);
-export const addNewRole = (req, res) => {
+export const AddNewRole = (req, res) => {
     let newRole = new Roles(req.body);
     newRole.save((err, role) => {
         if (err) {
@@ -10,7 +10,7 @@ export const addNewRole = (req, res) => {
         res.json(role)
     })
 }
-export const getRoles = (req, res) => {
+export const GetRoles = (req, res) => {
     Roles.find({}, (err, role) => {
         if (err) {
             res.send(err)
@@ -18,7 +18,7 @@ export const getRoles = (req, res) => {
         res.json(role)
     })
 }
-export const getRoleWithId = (req, res) => {
+export const GetRoleWithId = (req, res) => {
     Roles.findById(req.params.roleId, (err, role) => {
         if (err) {
             res.send(err)
@@ -26,7 +26,7 @@ export const getRoleWithId = (req, res) => {
         res.json(role)
     })
 }
-export const updateRole = (req, res) => {
+export const UpdateRole = (req, res) => {
     Roles.findOneAndUpdate({ _id: req.params.roleId }, req.body, { new: true, useFindAndModify: false }, (err, role) => {
         if (err) {
             res.send(err)
@@ -34,7 +34,7 @@ export const updateRole = (req, res) => {
         res.json(role)
     })
 }
-export const deleteRole = (req, res) => {
+export const DeleteRole = (req, res) => {
     Roles.deleteOne({ _id: req.params.roleId }, (err, role) => {
         if (err) {
             res.send(err)

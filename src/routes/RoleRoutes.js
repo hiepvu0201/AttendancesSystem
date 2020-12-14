@@ -2,12 +2,12 @@ import { addNewRole, getRoles, getRoleWithId, updateRole, deleteRole } from '../
 
 const routes = (app) => {
     app.route('/roles')
-        .get(getRoles)
-        .post(addNewRole);
+        .get(GetRoles)
+        .post(AddNewRole);
     app.route('/roles/:roleId')
-        .get(getRoleWithId)
-        .put(updateRole)
-        .delete(deleteRole);
+        .get(GetRoleWithId)
+        .put(UpdateRole)
+        .delete(DeleteRole);
 }
 
 export default routes;

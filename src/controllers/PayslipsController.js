@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { PayslipsSchema } from '../models/Payslips'
 const Payslips = mongoose.model('Payslips', PayslipsSchema);
-export const addNewPayslip = (req, res) => {
+export const AddNewPayslip = (req, res) => {
     let newPayslip = new Payslips(req.body);
     newPayslip.save((err, payslip) => {
         if (err) {
@@ -10,7 +10,7 @@ export const addNewPayslip = (req, res) => {
         res.json(payslip)
     })
 }
-export const getPayslips = (req, res) => {
+export const GetPayslips = (req, res) => {
     Payslips.find({}, (err, payslip) => {
         if (err) {
             res.send(err)
@@ -18,7 +18,7 @@ export const getPayslips = (req, res) => {
         res.json(payslip)
     })
 }
-export const getPayslipWithId = (req, res) => {
+export const GetPayslipWithId = (req, res) => {
     Payslips.findById(req.params.departmentId, (err, payslip) => {
         if (err) {
             res.send(err)
@@ -26,7 +26,7 @@ export const getPayslipWithId = (req, res) => {
         res.json(payslip)
     })
 }
-export const updatePayslip = (req, res) => {
+export const UpdatePayslip = (req, res) => {
     Payslips.findOneAndUpdate({ _id: req.params.payslipId }, req.body, { new: true, useFindAndModify: false }, (err, payslip) => {
         if (err) {
             res.send(err)
@@ -34,7 +34,7 @@ export const updatePayslip = (req, res) => {
         res.json(payslip)
     })
 }
-export const deletePayslip = (req, res) => {
+export const DeletePayslip = (req, res) => {
     Payslips.deleteOne({ _id: req.params.payslipId }, (err, payslip) => {
         if (err) {
             res.send(err)

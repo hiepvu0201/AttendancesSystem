@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { UsersSchema } from '../models/Users'
 const Users = mongoose.model('Users', UsersSchema);
-export const addNewUser = (req, res) => {
+export const AddNewUser = (req, res) => {
     let NewUser = new Users(req.body);
     NewUser.save((err, user) => {
         if (err) {
@@ -10,7 +10,7 @@ export const addNewUser = (req, res) => {
         res.json(user)
     })
 }
-export const getUsers = (req, res) => {
+export const GetUsers = (req, res) => {
     Users.find({}, (err, user) => {
         if (err) {
             res.send(err)
@@ -18,7 +18,7 @@ export const getUsers = (req, res) => {
         res.json(user)
     })
 }
-export const getUserWithId = (req, res) => {
+export const GetUserWithId = (req, res) => {
     Users.findById(req.params.userId, (err, user) => {
         if (err) {
             res.send(err)
@@ -26,7 +26,7 @@ export const getUserWithId = (req, res) => {
         res.json(user)
     })
 }
-export const updateUser = (req, res) => {
+export const UpdateUser = (req, res) => {
     Users.findOneAndUpdate({ _id: req.params.userId }, req.body, { new: true, useFindAndModify: false }, (err, user) => {
         if (err) {
             res.send(err)
@@ -34,7 +34,7 @@ export const updateUser = (req, res) => {
         res.json(user)
     })
 }
-export const deleteUser = (req, res) => {
+export const DeleteUser = (req, res) => {
     Users.deleteOne({ _id: req.params.userId }, (err, user) => {
         if (err) {
             res.send(err)
