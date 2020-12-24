@@ -12,6 +12,7 @@ export const PayslipsSchema = new Schema({
     bonus: Number,
     tax: Number,
     deductionSalary: Number,
+    userId: Number,
     createAt: { type: Date, default: Date.now },
     isDisable: {
         type: Boolean,

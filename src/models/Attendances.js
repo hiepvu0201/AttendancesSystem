@@ -10,6 +10,7 @@ export const AttendancesSchema = new Schema({
     checkInAt: Date,
     checkOutAt: Date,
     userId: Number,
+    shiftId: Number,
     createAt: { type: Date, default: Date.now },
     isDisable: {
         type: Boolean,
