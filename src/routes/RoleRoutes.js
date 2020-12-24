@@ -1,4 +1,4 @@
-import { addNewRole, getRoles, getRoleWithId, updateRole, deleteRole } from '../controllers/RolesController';
+import { AddNewRole, GetRoles, GetRoleWithId, UpdateRole, DeleteRole } from '../controllers/RolesController';
 
 const routes = (app) => {
     app.route('/roles')

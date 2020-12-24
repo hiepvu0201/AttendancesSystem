@@ -1,4 +1,4 @@
-import { addNewDepartment, getDepartments, getDepartmentWithId, updateDepartment, deleteDepartment } from '../controllers/DepartmentsController';
+import { AddNewDepartment, GetDepartments, GetDepartmentWithId, UpdateDepartment, DeleteDepartment } from '../controllers/DepartmentsController';
 
 const routes = (app) => {
     app.route('/departments')

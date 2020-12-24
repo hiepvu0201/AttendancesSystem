@@ -1,4 +1,4 @@
-import { addNewUser, getUsers, getUserWithId, updateUser, deleteUser } from '../controllers/UsersController';
+import { AddNewUser, GetUsers, GetUserWithId, UpdateUser, DeleteUser } from '../controllers/UsersController';
 
 const routes = (app) => {
     app.route('/users')

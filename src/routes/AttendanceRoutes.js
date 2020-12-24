@@ -1,4 +1,4 @@
-import { addNewAttendance, getAttendances, getAttendanceWithId, updateAttendance, deleteAttendance } from '../controllers/AttendancesController';
+import { AddNewAttendance, GetAttendances, GetAttendanceWithId, UpdateAttendance, DeleteAttendance } from '../controllers/AttendancesController';
 
 const routes = (app) => {
     app.route('/attendances')

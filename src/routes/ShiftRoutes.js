@@ -1,4 +1,4 @@
-import { addNewShift, getShifts, getShiftWithId, updateShift, deleteShift } from '../controllers/ShiftsController';
+import { AddNewShift, GetShifts, GetShiftWithId, UpdateShift, DeleteShift } from '../controllers/ShiftsController';
 
 const routes = (app) => {
     app.route('/shifts')

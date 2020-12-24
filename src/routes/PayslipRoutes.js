@@ -1,4 +1,4 @@
-import { addNewPayslip, getPayslips, getPayslipWithId, updatePayslip, deletePayslip } from '../controllers/PayslipsController';
+import { AddNewPayslip, GetPayslips, GetPayslipWithId, UpdatePayslip, DeletePayslip } from '../controllers/PayslipsController';
 
 const routes = (app) => {
     app.route('/payslips')
