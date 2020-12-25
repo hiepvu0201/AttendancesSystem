@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 export const DepartmentsSchema = new Schema({
     departmentName: String,
-    shiftId: Number,
-    createAt: { type: Date, default: Date.now },
+    shifts:[{type: Schema.Types.ObjectId, ref: 'Shifts'}],
     isDisable: {
         type: Boolean,
         default: false
     }
-});
+},
+{timestamps:true});

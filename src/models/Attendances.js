@@ -3,17 +3,16 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const AttendancesSchema = new Schema({
-    dateCheck: Date,
+    dateCheck: String,
     status: Boolean,
     note: String,
     workingHours: Number,
     checkInAt: Date,
     checkOutAt: Date,
-    userId: Number,
-    shiftId: Number,
-    createAt: { type: Date, default: Date.now },
+    users: [{type: Schema.Types.ObjectId, ref: 'Users'}],
     isDisable: {
         type: Boolean,
         default: false
     }
-});
+},
+{timestamps:true});

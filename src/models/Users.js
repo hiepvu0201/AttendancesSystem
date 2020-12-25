@@ -11,11 +11,12 @@ export const UsersSchema = new Schema({
     grossSalary: Number,
     netSalary: Number,
     note: String,
-    departmentId: Number,
-    roleId: Number,
-    createAt: { type: Date, default: Date.now },
+    departments: [{type: Schema.Types.ObjectId, ref: 'Departments'}],
+    roles: [{type: Schema.Types.ObjectId, ref: 'Roles'}],
+    shifts: [{type: Schema.Types.ObjectId, ref: 'Shifts'}],
     isDisable: {
         type: Boolean,
         default: false
     }
-});
+},
+{timestamps:true});

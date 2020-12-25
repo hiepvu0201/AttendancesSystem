@@ -1,6 +1,6 @@
 import express from 'express';
 const app = express();
-const PORT = 5000;
+const port = process.env.PORT||5000;
 
 import departmentRoutes from './src/routes/DepartmentRoutes';
 import userRoutes from './src/routes/UserRoutes';
@@ -13,6 +13,12 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 dotenv.config();
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 // mongoose connection
 mongoose.Promise = global.Promise;
@@ -32,7 +38,7 @@ attendanceRoutes(app);
 roleRoutes(app);
 
 app.get('/', (req, res) =>
-    res.send(`Node and express server running on port ${PORT}`)
+    res.send(`Node and express server running on port ${port}`)
 )
-app.listen(PORT, () =>
-    console.log(`Your server is running on port ${PORT}`))
+app.listen(port, () =>
+    console.log(`Your server is running on port ${port}`))

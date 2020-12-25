@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Types } from 'mongoose';
 
 const Schema = mongoose.Schema;
 export const PayslipsSchema = new Schema({
@@ -12,10 +12,10 @@ export const PayslipsSchema = new Schema({
     bonus: Number,
     tax: Number,
     deductionSalary: Number,
-    userId: Number,
-    createAt: { type: Date, default: Date.now },
+    users: [{type: Schema.Types.ObjectId, ref: 'Users'}],
     isDisable: {
         type: Boolean,
         default: false
     }
-});
+},
+{timestamps:true});
