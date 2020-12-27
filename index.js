@@ -8,17 +8,12 @@ import shiftRoutes from './src/routes/ShiftRoutes';
 import payslipRoutes from './src/routes/PayslipRoutes';
 import attendanceRoutes from './src/routes/AttendanceRoutes';
 import roleRoutes from './src/routes/RoleRoutes';
-
+import cors from 'cors';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
-dotenv.config();
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+dotenv.config();
 
 // mongoose connection
 mongoose.Promise = global.Promise;
@@ -27,8 +22,9 @@ mongoose.connect(process.env.DB, {
         useUnifiedTopology: true
     })
     //bodyparser setup
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(cors());
 
 departmentRoutes(app);
 userRoutes(app);
