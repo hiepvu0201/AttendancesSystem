@@ -13,12 +13,9 @@ export const AddNewAttendance = (req, res) => {
     })
 }
 export const GetAttendances = (req, res) => {
-    Attendances.find({}, (err, attendance) => {
-        if (err) {
-            res.send(err)
-        }
-        res.json(attendance)
-    })
+    Attendances.find({}).populate({
+        path:"user"
+    }).then((value)=>res.json(value)).catch(error=>res.send(error))
 }
 export const GetAttendanceWithId = (req, res) => {
     Attendances.findById(req.params.attendanceId, (err, attendance) => {
@@ -59,17 +56,23 @@ export const CheckIn = (req, res) => {
       });
 }
 export const CheckOut = (req, res) => {
-    Attendances.findOneAndUpdate({
-        _id: req.params.attendanceId
-    },
-    req.body,
-    {
-        new: true, useFindAndModify: false, 
-    },
-    (err, attendance) => {
-        if(err){
-            res.send(err);
-        }
-        res.json(attendance);
-    });
+    // Attendances.findOneAndUpdate({
+    //     _id: req.params.attendanceId
+    // },
+    // req.body,
+    // {
+    //     new: true, useFindAndModify: false, 
+    // },
+    // (err, attendance) => {
+    //     if(err){
+    //         res.send(err);
+    //     }
+    //     res.json(attendance);
+    // });
+    Attendances.findByIdAndUpdate(req.params.id,{
+        checkOut:Date.now()
+    },{new: true, useFindAndModify: false, }).then(result=>{
+        
+        res.json(result);
+    }).catch(error=>console.log(error))
 };

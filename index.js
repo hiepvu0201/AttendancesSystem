@@ -1,19 +1,19 @@
 import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+dotenv.config();
 const app = express();
-const port = process.env.PORT||5000;
-
+const PORT = process.env.PORT||5000;
 import departmentRoutes from './src/routes/DepartmentRoutes';
 import userRoutes from './src/routes/UserRoutes';
 import shiftRoutes from './src/routes/ShiftRoutes';
 import payslipRoutes from './src/routes/PayslipRoutes';
 import attendanceRoutes from './src/routes/AttendanceRoutes';
 import roleRoutes from './src/routes/RoleRoutes';
-import cors from 'cors';
+
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
 
-dotenv.config();
 
 // mongoose connection
 mongoose.Promise = global.Promise;
@@ -22,9 +22,10 @@ mongoose.connect(process.env.DB, {
         useUnifiedTopology: true
     })
     //bodyparser setup
-app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.options('*', cors())
+app.use(bodyParser.json());
 
 departmentRoutes(app);
 userRoutes(app);
@@ -34,7 +35,7 @@ attendanceRoutes(app);
 roleRoutes(app);
 
 app.get('/', (req, res) =>
-    res.send(`Node and express server running on port ${port}`)
+    res.send(`Node and express server running on port ${PORT}`)
 )
-app.listen(port, () =>
-    console.log(`Your server is running on port ${port}`))
+app.listen(PORT, () =>
+    console.log(`Your server is running on port ${PORT}`))

@@ -11,7 +11,7 @@ export const AddNewUser = (req, res) => {
     })
 }
 export const GetUsers = (req, res) => {
-    Users.find({}, (err, user) => {
+    Users.find().sort({createdAt:-1}).then((err,user)=>{
         if (err) {
             res.send(err)
         }
@@ -41,4 +41,11 @@ export const DeleteUser = (req, res) => {
         }
         res.json({ message: "successfully deleted user" })
     })
+}
+export const LoginUser= async (req,res)=>{
+    const user = await Users.findOne({email:req.body.email,password:req.body.password});
+    if(user){
+        return res.json({ message: "SUCCESS" ,data:user })
+    }
+    return res.json({ message: "ERROR" })
 }
