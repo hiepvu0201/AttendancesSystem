@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
-import { AttendancesSchema } from '../models/Attendances'
+import { AttendancesSchema } from '../models/Attendances.js'
 const Attendances = mongoose.model('Attendances', AttendancesSchema);
-import {UsersSchema} from '../models/Users'
+import {UsersSchema} from '../models/Users.js'
 const Users = mongoose.model('Users', UsersSchema)
-export const AddNewAttendance = (req, res) => {
+
+export const addNewAttendance = (req, res) => {
     let newAttendance = new Attendances(req.body);
     newAttendance.save((err, attendance) => {
         if (err) {
@@ -12,12 +13,12 @@ export const AddNewAttendance = (req, res) => {
         res.json(attendance)
     })
 }
-export const GetAttendances = (req, res) => {
+export const getAttendances = (req, res) => {
     Attendances.find({}).populate({
         path:"user"
     }).then((value)=>res.json(value)).catch(error=>res.send(error))
 }
-export const GetAttendanceWithId = (req, res) => {
+export const getAttendanceWithId = (req, res) => {
     Attendances.findById(req.params.attendanceId, (err, attendance) => {
         if (err) {
             res.send(err)
@@ -25,7 +26,7 @@ export const GetAttendanceWithId = (req, res) => {
         res.json(attendance)
     })
 }
-export const UpdateAttendance = (req, res) => {
+export const updateAttendance = (req, res) => {
     Attendances.findOneAndUpdate({ _id: req.params.attendanceId }, req.body, { new: true, useFindAndModify: false }, (err, attendance) => {
         if (err) {
             res.send(err)
@@ -33,7 +34,7 @@ export const UpdateAttendance = (req, res) => {
         res.json(attendance)
     })
 }
-export const DeleteAttendance = (req, res) => {
+export const deleteAttendance = (req, res) => {
     Attendances.deleteOne({ _id: req.params.attendanceId }, (err, attendance) => {
         if (err) {
             res.send(err)
@@ -41,7 +42,7 @@ export const DeleteAttendance = (req, res) => {
         res.json({ message: "successfully deleted attendance" })
     })
 }
-export const CheckIn = (req, res) => {
+export const checkIn = (req, res) => {
     let newAttendance = new Attendances(req.body);
     Attendances.findByDateCheck(req.params.dateCheck, (err, attendance) =>{
         if(!err){
@@ -55,7 +56,7 @@ export const CheckIn = (req, res) => {
         res.json(attendance);
       });
 }
-export const CheckOut = (req, res) => {
+export const checkOut = (req, res) => {
     // Attendances.findOneAndUpdate({
     //     _id: req.params.attendanceId
     // },

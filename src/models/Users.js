@@ -10,7 +10,9 @@ export const UsersSchema = new Schema({
     },
     pin: String,
     email:{
-        type:String
+        type:String,
+        required: true,
+        unique: true
     },
     phone:{
         type:String
@@ -29,11 +31,11 @@ export const UsersSchema = new Schema({
     },
     password:{
         type:String,
-        default:"admin"
+        required: true,
+        minlength: 6
     },
     roleId: {
         type:Number,
-        default:0
     },
     isDisable: {
         type: Boolean,

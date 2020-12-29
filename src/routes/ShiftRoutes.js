@@ -1,13 +1,13 @@
-import { AddNewShift, GetShifts, GetShiftWithId, UpdateShift, DeleteShift } from '../controllers/ShiftsController';
+import { addNewShift, getShifts, getShiftWithId, updateShift, deleteShift } from '../controllers/ShiftsController.js';
 
 const routes = (app) => {
     app.route('/shifts')
-        .get(GetShifts)
-        .post(AddNewShift);
+        .get(getShifts)
+        .post(addNewShift);
     app.route('/shifts/:shiftId')
-        .get(GetShiftWithId)
-        .put(UpdateShift)
-        .delete(DeleteShift);
+        .get(getShiftWithId)
+        .put(updateShift)
+        .delete(deleteShift);
 }
 
 export default routes;

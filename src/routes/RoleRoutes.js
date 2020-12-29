@@ -1,13 +1,13 @@
-import { AddNewRole, GetRoles, GetRoleWithId, UpdateRole, DeleteRole } from '../controllers/RolesController';
+import { addNewRole, getRoles, getRoleWithId, updateRole, deleteRole } from '../controllers/RolesController.js';
 
 const routes = (app) => {
     app.route('/roles')
-        .get(GetRoles)
-        .post(AddNewRole);
+        .get(getRoles)
+        .post(addNewRole);
     app.route('/roles/:roleId')
-        .get(GetRoleWithId)
-        .put(UpdateRole)
-        .delete(DeleteRole);
+        .get(getRoleWithId)
+        .put(updateRole)
+        .delete(deleteRole);
 }
 
 export default routes;

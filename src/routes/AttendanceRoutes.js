@@ -1,14 +1,14 @@
-import { AddNewAttendance, GetAttendances, GetAttendanceWithId, UpdateAttendance, DeleteAttendance ,CheckOut} from '../controllers/AttendancesController';
+import { addNewAttendance, getAttendances, getAttendanceWithId, updateAttendance, deleteAttendance ,checkOut} from '../controllers/AttendancesController.js';
 
 const routes = (app) => {
     app.route('/attendances')
-        .get(GetAttendances)
-        .post(AddNewAttendance);
+        .get(getAttendances)
+        .post(addNewAttendance);
     app.route('/attendances/:attendanceId')
-        .get(GetAttendanceWithId)
-        .put(UpdateAttendance)
-        .delete(DeleteAttendance);
-    app.route('/attendances/checkOut/:id').post(CheckOut);
+        .get(getAttendanceWithId)
+        .put(updateAttendance)
+        .delete(deleteAttendance);
+    app.route('/attendances/checkout/:id').post(checkOut);
 
     
 }

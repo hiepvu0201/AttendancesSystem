@@ -4,12 +4,12 @@ import cors from 'cors';
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT||5000;
-import departmentRoutes from './src/routes/DepartmentRoutes';
-import userRoutes from './src/routes/UserRoutes';
-import shiftRoutes from './src/routes/ShiftRoutes';
-import payslipRoutes from './src/routes/PayslipRoutes';
-import attendanceRoutes from './src/routes/AttendanceRoutes';
-import roleRoutes from './src/routes/RoleRoutes';
+import departmentRoutes from './src/routes/DepartmentRoutes.js';
+import userRoutes from './src/routes/UserRoutes.js'; 
+import shiftRoutes from './src/routes/ShiftRoutes.js';
+import payslipRoutes from './src/routes/PayslipRoutes.js';
+import attendanceRoutes from './src/routes/AttendanceRoutes.js';
+import roleRoutes from './src/routes/RoleRoutes.js';
 
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
@@ -19,7 +19,8 @@ import bodyParser from 'body-parser';
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useCreateIndex: true
     })
     //bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));

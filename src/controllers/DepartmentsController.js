@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
-import { DepartmentsSchema } from "../models/Departments";
+import { DepartmentsSchema } from "../models/Departments.js";
 const Departments = mongoose.model("Departments", DepartmentsSchema);
-export const AddNewDepartment = (req, res) => {
+
+export const addNewDepartment = (req, res) => {
   let newDepartment = new Departments(req.body);
   newDepartment.save((err, department) => {
     if (err) {
@@ -10,7 +11,7 @@ export const AddNewDepartment = (req, res) => {
     res.json(department);
   });
 };
-export const GetDepartments = (req, res) => {
+export const getDepartments = (req, res) => {
   Departments.find({}, (err, department) => {
     if (err) {
       res.send(err);
@@ -18,7 +19,7 @@ export const GetDepartments = (req, res) => {
     res.json(department);
   });
 };
-export const GetDepartmentWithId = (req, res) => {
+export const getDepartmentWithId = (req, res) => {
   Departments.findById(req.params.departmentId, (err, department) => {
     if (err) {
       res.send(err);
@@ -26,7 +27,7 @@ export const GetDepartmentWithId = (req, res) => {
     res.json(department);
   });
 };
-export const UpdateDepartment = (req, res) => {
+export const updateDepartment = (req, res) => {
   Departments.findOneAndUpdate(
     { _id: req.params.departmentId },
     req.body,
@@ -39,7 +40,7 @@ export const UpdateDepartment = (req, res) => {
     }
   );
 };
-export const DeleteDepartment = (req, res) => {
+export const deleteDepartment = (req, res) => {
   Departments.deleteOne({ _id: req.params.departmentId }, (err, department) => {
     if (err) {
       res.send(err);

@@ -1,13 +1,13 @@
-import { AddNewPayslip, GetPayslips, GetPayslipWithId, UpdatePayslip, DeletePayslip } from '../controllers/PayslipsController';
+import { addNewPayslip, getPayslips, getPayslipWithId, updatePayslip, deletePayslip } from '../controllers/PayslipsController.js';
 
 const routes = (app) => {
     app.route('/payslips')
-        .get(GetPayslips)
-        .post(AddNewPayslip);
+        .get(getPayslips)
+        .post(addNewPayslip);
     app.route('/payslips/:payslipId')
-        .get(GetPayslipWithId)
-        .put(UpdatePayslip)
-        .delete(DeletePayslip);
+        .get(getPayslipWithId)
+        .put(updatePayslip)
+        .delete(deletePayslip);
 }
 
 export default routes;

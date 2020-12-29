@@ -1,13 +1,13 @@
-import { AddNewDepartment, GetDepartments, GetDepartmentWithId, UpdateDepartment, DeleteDepartment } from '../controllers/DepartmentsController';
+import { addNewDepartment, getDepartments, getDepartmentWithId, updateDepartment, deleteDepartment } from '../controllers/DepartmentsController.js';
 
 const routes = (app) => {
     app.route('/departments')
-        .get(GetDepartments)
-        .post(AddNewDepartment);
+        .get(getDepartments)
+        .post(addNewDepartment);
     app.route('/departments/:departmentId')
-        .get(GetDepartmentWithId)
-        .put(UpdateDepartment)
-        .delete(DeleteDepartment);
+        .get(getDepartmentWithId)
+        .put(updateDepartment)
+        .delete(deleteDepartment);
 }
 
 export default routes;

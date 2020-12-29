@@ -1,14 +1,17 @@
-import { AddNewUser, GetUsers, GetUserWithId, UpdateUser, DeleteUser ,LoginUser } from '../controllers/UsersController';
+import { addNewUser, getUsers, getUserWithId, updateUser, deleteUser, loginUser, registerUser, tokenIsValid} from '../controllers/UsersController.js';
+import {auth} from '../../middleware/auth.js'
 
 const routes = (app) => {
     app.route('/users')
-        .get(GetUsers)
-        .post(AddNewUser);
+        .get(getUsers)
+        .post(addNewUser)
     app.route('/users/:userId')
-        .get(GetUserWithId)
-        .put(UpdateUser)
-        .delete(DeleteUser);
-    app.post('/login',LoginUser);
+        .get(getUserWithId)
+        .put(updateUser)
+        .delete(auth, deleteUser)
+    app.route('/users/login').post(loginUser)
+    app.route('/users/register').post(registerUser)
+    app.route('/users/tokenisvalid').post(tokenIsValid)
 }
 
 export default routes;
