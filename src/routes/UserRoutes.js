@@ -4,7 +4,7 @@ import {auth} from '../../middleware/auth.js'
 const routes = (app) => {
     app.route('/users')
         .get(auth, getUsers)
-        .post(addNewUser)
+        .post(auth, addNewUser)
     app.route('/users/:userId')
         .get(auth, getUserWithId)
         .put(auth, updateUser)
