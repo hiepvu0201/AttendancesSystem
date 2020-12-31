@@ -17,7 +17,7 @@ export const addNewUser = (req, res) => {
 export const getUsers = (req, res) => {
     Users.find().sort({createdAt:-1}).then((err,user)=>{
         if (err) {
-            res.send(err)
+            return res.send(err)
         }
         res.json(user)
     })
@@ -54,7 +54,6 @@ export const deleteUser = (req, res) => {
 export const loginUser= async (req,res)=>{
     try {
         const {email, password} = req.body
-
         if (!email||!password) {
             return res.status(400).json({msg:"Not all fields have been entered!"})
         }

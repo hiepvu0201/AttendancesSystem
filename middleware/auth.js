@@ -10,7 +10,12 @@ export const auth = async (req, res, next) => {
         if (!verified) {
             return res.status(401).json({msg: "Token verification failed, authorization denied"})
         }
-        req.params.id = verified.id
+        if (req.params!=null) {
+            req.params.id = verified.id    
+        }
+        else{
+            req.user = verified.id
+        }
         next()
     } catch (err) {
         res.status(500).json({error: err.message})

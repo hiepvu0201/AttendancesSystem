@@ -1,19 +1,17 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-dotenv.config();
-const app = express();
-const PORT = process.env.PORT||5000;
 import departmentRoutes from './src/routes/DepartmentRoutes.js';
 import userRoutes from './src/routes/UserRoutes.js'; 
 import shiftRoutes from './src/routes/ShiftRoutes.js';
 import payslipRoutes from './src/routes/PayslipRoutes.js';
 import attendanceRoutes from './src/routes/AttendanceRoutes.js';
 import roleRoutes from './src/routes/RoleRoutes.js';
-
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-
+dotenv.config();
+const app = express();
+const PORT = process.env.PORT||5000;
 
 // mongoose connection
 mongoose.Promise = global.Promise;
@@ -23,9 +21,9 @@ mongoose.connect(process.env.DB, {
         useCreateIndex: true
     })
     //bodyparser setup
+
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
-app.options('*', cors())
+app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
 
 departmentRoutes(app);
