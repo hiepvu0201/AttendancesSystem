@@ -84,7 +84,7 @@ export const loginUser= async (req,res)=>{
 }
 export const registerUser = async(req, res)=>{
     try{
-        let {email, password, passwordCheck, fullName, job, department, phone} = req.body
+        let {email, password, passwordCheck, fullname, job, department, phone} = req.body
 
         //validate
         if(!email||!password||!passwordCheck){
@@ -100,15 +100,15 @@ export const registerUser = async(req, res)=>{
         if (existingUser) {
             return res.status(400).json({msg: "An account with this email has already existed!"})
         }
-        if (!fullName) {
-            fullName=email
+        if (!fullname) {
+            fullname=email
         }
         const salt = await bcrypt.genSalt()
         const passwordHash = await bcrypt.hash(password, salt)
         const newUser = new Users({
             email,
             password: passwordHash,
-            fullName,
+            fullname,
             job,
             department,
             phone
